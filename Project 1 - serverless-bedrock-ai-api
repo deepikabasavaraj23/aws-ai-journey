@@ -1,1 +1,5 @@
+# Serverless AI Question Answering API
 
+This project demonstrates how to build a serverless AI API using AWS services.
+
+The system uses Amazon API Gateway to expose an HTTP endpoint, AWS Lambda to process the request, and Amazon Bedrock to generate AI responses using the Nova Lite model.
