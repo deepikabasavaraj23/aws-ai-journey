@@ -1,22 +1,53 @@
 ## Project 1 - Serverless AI API using Amazon Bedrock
 
-Architecture:
+## Architecture
 
 User → API Gateway → Lambda → Amazon Bedrock → Response
 
-How it works:
+Visual diagram
+                +-------------+
+                |    User     |
+                |  (Browser)  |
+                +------+------+ 
+                       |
+                       v
+                +-------------+
+                | API Gateway |
+                +------+------+ 
+                       |
+                       v
+                +-------------+
+                |   Lambda    |
+                | (Python +   |
+                |   boto3)    |
+                +------+------+ 
+                       |
+                       v
+                +-------------+
+                | Amazon      |
+                |  Bedrock    |
+                | (Nova Lite) |
+                +------+------+ 
+                       |
+                       v
+                +-------------+
+                |   Response  |
+                +-------------+
 
-1. User sends request:
-/ask?question=What is DevOps
+## How It Works
 
-2. API Gateway receives the request
+1. The user sends a request to the API endpoint.
 
-3. API Gateway triggers AWS Lambda
+   /ask?question=What is DevOps
 
-4. Lambda extracts the question parameter
+2. API Gateway receives the HTTP request.
 
-5. Lambda calls Amazon Bedrock (Nova Lite model)
+3. API Gateway triggers the Lambda function.
 
-6. Bedrock generates the response
+4. Lambda extracts the query parameter and prepares the prompt.
 
-7. Lambda returns the answer
+5. Lambda invokes the Amazon Bedrock Nova Lite model using boto3.
+
+6. Bedrock generates the AI response.
+
+7. Lambda returns the response to API Gateway, which sends it back to the user.
